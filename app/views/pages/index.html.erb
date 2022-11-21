@@ -9,29 +9,36 @@
   <p class="select-text">SELECT YOUR BET</p>
   <div class="button-group">
     <div class="button" value="rock">
-      <%= image_tag("Rock.png") %>
+      <%= image_tag("rock.png") %>
       <span class="button-text">Rock</span>
     </div>
     <div class="button" value="paper" >
-      <%= image_tag("Paper.png") %>
+      <%= image_tag("paper.png") %>
       <span class="button-text">Paper</span>
     </div>
     <div class="button" value="scissors" >
-      <%= image_tag("Scissors.png") %>
+      <%= image_tag("scissors.png") %>
       <span class="button-text">Scissors</span>
     </div>
   </div>
+
   <div class="modal-container" id='modal'>
-    <h2 class="modal-title">WAITING CURB’S CHOOSE</h2>
-    <div class="bet-container">
-      <div class="bet-group">
-        <span class="bet-text">Your bet</span>
-      </div>
-      <div class="bet-group">
-        <div class="bet-loading">
-          <div class="dot-pulse"></div>
+    <div class="modal">
+      <%= image_tag("х.png", class: "modal-close") %>
+      <p class="modal-title">WAITING CURB’S CHOOSE</p>
+      <div class="bet-container">
+        <div class="bet-group" id="users_bet">
+          <span class="bet-text">Your bet</span>
+        </div>
+        <div class="bet-group">
+          <div class="bet-loading">
+            <%= image_tag("loader.png") %>
+          </div>
+          <span class="bet-text"><%= image_tag("curb_logo.png") %></span>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   </div>
 </div>
