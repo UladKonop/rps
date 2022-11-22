@@ -31,15 +31,30 @@ $(document).ready(() => {
             data: { guess: rps_buttons[i].getAttribute('value') },
           }).done((data) => {
 
-              modal.style.width = "492px";
-              modal.style.height = "591px";
-              modal_first_part.style.display = "none";
-              modal_second_part.style.display = "block";
+            modal.style.width = "492px";
+            modal.style.height = "591px";
 
-              let users_bet_div = document.getElementById('users_bet');
-              let user_bet_img = document.getElementById('users_bet_img');
-              users_bet_div.removeChild(user_bet_img);
+            modal_first_part.style.display = "none";
+            modal_second_part.style.display = "block";
+            let users_bet_div = document.getElementById('users_bet');
+            let user_bet_img = document.getElementById('users_bet_img');
+            users_bet_div.removeChild(user_bet_img);
 
+            let modal_title_second_part_p = document.getElementById('modal-title-second-part');
+            modal_title_second_part_p.innerText = data['result']['message']
+            let modal_title_second_part_bet_text_p = document.getElementById('modal-second-part-bet-text');
+
+            if (data['result']['message'] == 'You lost!') {
+              modal_title_second_part_bet_text_p.innerText = 'Curb with ' + data['result']['computer_guess'] + ' wins'
+            } else if (data['result']['message'] == 'You win!'){
+              modal_title_second_part_bet_text_p.innerText = 'Curb with ' + data['result']['computer_guess'] + ' lost'
+            }
+
+            let img = document.createElement("img");
+            img.src = local_img_srcs[data['result']['computer_guess']];
+            img.setAttribute('id', 'computer_guess_img');
+            img.setAttribute('class', 'bet-curb-image');
+            modal_second_part.append(img)
           });
         }, (SECONDS_TO_DISPLAY_MODAL * 1000));
 
@@ -49,15 +64,18 @@ $(document).ready(() => {
     // logic for the close button
     const close_btn = document.getElementById('close');
     close_btn.onclick = function() {
-      modal.style.width = "879px";
-      modal.style.height = "492px";
-      modal_container.style.display = "none";
-      modal_first_part.style.display = "block";
-      modal_second_part.style.display = "none";
-      let users_bet_div = document.getElementById('users_bet');
-      let user_bet_img = document.getElementById('users_bet_img');
-      users_bet_div.removeChild(user_bet_img);
 
+    modal.style.width = "879px";
+    modal.style.height = "492px";
+    let computer_guess_img = document.getElementById('computer_guess_img');
+    let second_part_div = document.getElementById('second-part');
+    let modal_second_part_bet_text = document.getElementById('modal-second-part-bet-text');
+    modal_second_part_bet_text.innerText = ''
+    second_part_div.removeChild(computer_guess_img);
+
+    modal_container.style.display = "none";
+    modal_first_part.style.display = "block";
+    modal_second_part.style.display = "none";
     }
   } catch (error) {
     console.error(error);

@@ -108,6 +108,9 @@
 
 .modal-second-part {
     display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .modal {
@@ -192,6 +195,7 @@
 .bet-curb-image {
     height: 161px;
     margin: 88px 0 0 0;
+    align-items: center;
 }
 
 .bet-text {
