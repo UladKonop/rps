@@ -21,11 +21,11 @@
       <span class="button-text">Scissors</span>
     </div>
   </div>
-  <div class="modal-container" id='modal'>
-    <div class="modal">
-
+  <div class="modal-container" id='modal-container'>
+    <div class="modal" id="modal">
       <%= image_tag("х.png", class: "modal-close", id: 'close') %>
-      <p class="modal-title">WAITING CURB’S CHOOSE</p>
+      <div class="modal-first-part" id='first-part'>
+      <p class="modal-title" id="modal-title">WAITING CURB’S CHOOSE</p>
       <div class="bet-container">
         <div class="bet-group" id="users_bet">
           <span class="bet-text">Your bet</span>
@@ -37,7 +37,12 @@
           <span class="bet-text"><%= image_tag("curb_logo.png") %></span>
         </div>
       </div>
+      </div>
+      <div class="modal-second-part" id="second-part">
+        <p class="modal-title-second-part">You win!</p>
+        <p class="modal-second-part-bet-text">Curb with paper lost</p>
 
+      </div>
     </div>
   </div>
 </div>

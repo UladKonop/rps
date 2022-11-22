@@ -92,31 +92,49 @@
     background-color: rgba(255, 255, 255, 0.72);
 }
 
+.modal-first-part {
+    display: block;
+}
+
+.modal-second-part-bet-text {
+    opacity: 0.54;
+    font-size: 21px;
+    line-height: 32px;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0px;
+    color: #000000;
+    text-align: center;
+}
+
+.modal-second-part {
+    display: none;
+}
+
 .modal {
-    /*position: relative;*/
     width: 879px;
     height: 492px;
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 40px #0000001a;
     border-radius: 5px;
     opacity: 1;
-    /*z-index: 10;*/
-
     background-color: #fefefe;
     margin: 12% auto; /* 15% from the top and centered */
     padding: 20px;
-    /*width: 80%;*/
-}
-
-.modal.modal-result {
-    width: 492px;
-    height: 591px;
 }
 
 .modal-title {
     font-family: "Montserrat", sans-serif;
     font-size: 32px;
     margin: 81px 0 81px 0;
+    letter-spacing: 0px;
+    color: #36006c;
+    text-align: center;
+}
+
+.modal-title-second-part {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    margin: 81px 0 18px 0;
     letter-spacing: 0px;
     color: #36006c;
     text-align: center;
