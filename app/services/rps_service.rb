@@ -7,11 +7,11 @@ class RpsService
 
   def call
     if rule_engine[computer_guess.to_sym].include? @guess
-      'You lost!'
+      { message: 'You lost!', computer_guess: @computer_guess }
     elsif rule_engine[@guess.to_sym].include? computer_guess
-      'You win!'
+      { message: 'You win!', computer_guess: @computer_guess }
     else
-      'Tie'
+      { message: 'Tie', computer_guess: @computer_guess }
     end
   end
 
