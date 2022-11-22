@@ -1,6 +1,5 @@
 $(document).ready(() => {
   try {
-    const SECONDS_TO_DISPLAY_MODAL = 1.5
     const modal_container = document.getElementById('modal-container');
     const modal = document.getElementById('modal');
     const modal_first_part = document.getElementById('first-part');
@@ -35,8 +34,6 @@ $(document).ready(() => {
         button.onclick = function () {
           modal_container.style.display = 'block';
           users_bet_div.prepend(create_img_tag(local_img_srcs[button.getAttribute('value')], 'users_bet_img', 'users_bet_img'));
-          setTimeout(function () {
-
             $.ajax({
               type: 'POST',
               url: 'api/games',
@@ -65,17 +62,20 @@ $(document).ready(() => {
               modal_second_part.append(create_img_tag(local_img_srcs[data['result']['computer_guess']], 'computer_guess_img', 'bet-curb-image'))
             }
             });
-          }, (SECONDS_TO_DISPLAY_MODAL * 1000));
         };
     }
 
-    // logic for the close
+    // logic for the close button
     function set_close_button_onclick_handler() {
     close_btn.onclick = function () {
       if (getComputedStyle(modal_first_part).getPropertyValue('display') == "block") {
         modal_container.style.display = "none";
         let users_bet_img = document.getElementById('users_bet_img');
         users_bet_div.removeChild(users_bet_img);
+        if (typeof(computer_guess_img) != 'undefined' && computer_guess_img != null) {
+          let second_part_div = document.getElementById('second-part');
+          second_part_div.removeChild(computer_guess_img);
+        }
       } else {
         set_modal_size(modal, "879px", "492px")
         let computer_guess_img = document.getElementById('computer_guess_img');
