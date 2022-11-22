@@ -32,7 +32,6 @@ $(document).ready(() => {
 
     // add handler on each button
     function set_user_guess_button_onclick_handler(button) {
-      // if (getComputedStyle(modal_first_part).getPropertyValue('display') == "none") {
         button.onclick = function () {
           modal_container.style.display = 'block';
           users_bet_div.prepend(create_img_tag(local_img_srcs[button.getAttribute('value')], 'users_bet_img', 'users_bet_img'));
@@ -43,14 +42,16 @@ $(document).ready(() => {
               url: 'api/games',
               data: { guess: button.getAttribute('value') },
             }).done((data) => {
+              if (getComputedStyle(modal_container).getPropertyValue('display') == "block") {
               set_modal_size(modal, "492px", "591px")
 
               modal_first_part.style.display = "none";
               modal_second_part.style.display = "block";
 
               let user_bet_img = document.getElementById('users_bet_img');
-              users_bet_div.removeChild(user_bet_img);
-
+              if (user_bet_img) {
+                users_bet_div.removeChild(user_bet_img);
+              }
               let modal_title_second_part_p = document.getElementById('modal-title-second-part');
               modal_title_second_part_p.innerText = data['result']['message']
               let modal_title_second_part_bet_text_p = document.getElementById('modal-second-part-bet-text');
@@ -62,12 +63,10 @@ $(document).ready(() => {
               }
 
               modal_second_part.append(create_img_tag(local_img_srcs[data['result']['computer_guess']], 'computer_guess_img', 'bet-curb-image'))
+            }
             });
-
           }, (SECONDS_TO_DISPLAY_MODAL * 1000));
-
         };
-      // }
     }
 
     // logic for the close
@@ -90,7 +89,7 @@ $(document).ready(() => {
       }
     }
   }
-//////
+
     save_images_sources();
     for (let i = 0; i < rps_buttons.length; i++) {
       set_user_guess_button_onclick_handler(rps_buttons[i])
