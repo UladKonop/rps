@@ -1,8 +1,9 @@
 class RpsService
-  attr_writer :rand_seed
+  attr_reader :rand_seed
 
-  def initialize(guess:)
+  def initialize(guess:, rand_seed: 2342343)
     @guess = guess
+    @rand_seed = rand_seed
   end
 
   def call
@@ -15,22 +16,18 @@ class RpsService
     end
   end
 
-  private
-
-  def randomization_algorithm
-    rand 2342343
-  end
-
   def computer_guess
     @computer_guess ||= api_call_computer_guess || offline_computer_guess
   end
+
+  private
 
   def api_call_computer_guess
     ::RpsGuessApiService.call
   end
 
   def offline_computer_guess
-    srand (@rand_seed || randomization_algorithm)
+    srand(rand_seed)
     computer_guesses = %w{rock paper scissors}
     computer_guesses.sample
   end
@@ -38,9 +35,9 @@ class RpsService
 
   def rule_engine
     {
-      'rock': ['scissors'],
-      'paper': ['rock'],
-      'scissors': ['paper']
+      rock: ['scissors'],
+      paper: ['rock'],
+      scissors: ['paper']
     }
   end
 end
