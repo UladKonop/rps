@@ -60,6 +60,9 @@ $(document).ready(() => {
             }
 
             modal_second_part.append(create_img_tag(local_img_srcs[data.result.computer_guess], 'computer_guess_img', 'bet-curb-image'));
+
+            const statistics_counter_div = document.getElementById('percentage');
+            statistics_counter_div.innerText = data.stats.percentage;
           }
         });
       };
