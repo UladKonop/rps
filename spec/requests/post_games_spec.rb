@@ -3,14 +3,15 @@ require 'rails_helper'
 
 RSpec.describe 'Games', type: :request do
   describe 'POST /create' do
+    before(:each) do
+      @stats = FactoryBot.create(:stats)
+    end
     context 'with valid parameters' do
       let(:guesses) { %w[rock paper scissors] }
       let(:users_guess_rock) { 'rock' }
       let(:users_guess_paper) { 'paper' }
       let(:users_guess_scissors) { 'scissors' }
-      let(:expected_results_for_users_rock) { [{"result"=>{"message"=>"You win!", "computer_guess"=>"scissors"}},{"result"=>{"message"=>"You lost!", "computer_guess"=>"paper"}},{"result"=>{"message"=>"Tie", "computer_guess"=>"rock"}}] }
-      let(:expected_results_for_users_paper) { [{"result"=>{"message"=>"You lost!", "computer_guess"=>"scissors"}},{"result"=>{"message"=>"Tie", "computer_guess"=>"paper"}},{"result"=>{"message"=>"You win!", "computer_guess"=>"rock"}}] }
-      let(:expected_results_for_users_scissors) { [{"result"=>{"message"=>"Tie", "computer_guess"=>"scissors"}},{"result"=>{"message"=>"You win!", "computer_guess"=>"paper"}},{"result"=>{"message"=>"You lost!", "computer_guess"=>"rock"}}] }
+      let(:expected_results_for_users) { ["You win!","You lost!","Tie"] }
 
       context 'random user guess' do
         before do
@@ -28,7 +29,7 @@ RSpec.describe 'Games', type: :request do
             { guess: users_guess_rock }
         end
         it 'returns correct response' do
-          expect(expected_results_for_users_rock.include?(json)).to eq(true)
+          expect(expected_results_for_users.include?(json['result']['message'])).to eq(true)
         end
       end
 
@@ -38,7 +39,7 @@ RSpec.describe 'Games', type: :request do
             { guess: users_guess_paper }
         end
         it 'returns correct response' do
-          expect(expected_results_for_users_paper.include?(json)).to eq(true)
+          expect(expected_results_for_users.include?(json['result']['message'])).to eq(true)
         end
       end
 
@@ -48,7 +49,7 @@ RSpec.describe 'Games', type: :request do
             { guess: users_guess_scissors }
         end
         it 'returns correct response' do
-          expect(expected_results_for_users_scissors.include?(json)).to eq(true)
+          expect(expected_results_for_users.include?(json['result']['message'])).to eq(true)
         end
       end
     end
