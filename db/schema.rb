@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_11_30_081022) do
     t.integer "counter", default: 0
     t.integer "wins", default: 0
     t.integer "loses", default: 0
+    t.decimal "percentage", precision: 8, scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
