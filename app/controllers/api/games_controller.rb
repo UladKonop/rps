@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Api
   class GamesController < ApiController
     before_action :find_stats_instance, only: :create
     def create
-      param! :guess, String, in: %w(rock paper scissors)
+      param! :guess, String, in: %w[rock paper scissors]
 
       @result = RpsService.new(guess: params[:guess]).call
       if @result
@@ -17,9 +19,10 @@ module Api
 
     def update_statistics!
       @stats.update!(counter: @stats.counter + 1)
-      if @result[:message] == 'You win!'
+      case @result[:message]
+      when 'You win!'
         @stats.update!(wins: @stats.wins + 1)
-      elsif @result[:message] == 'You lost!'
+      when 'You lost!'
         @stats.update!(loses: @stats.loses + 1)
       end
       @stats.update!(percentage: (@stats.wins / @stats.counter.to_f * 100))

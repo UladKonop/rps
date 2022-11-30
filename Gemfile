@@ -60,3 +60,8 @@ gem 'jquery-rails'
 gem 'htmlbeautifier'
 
 gem 'rails_param'
+
+gem 'rubocop', '~> 1.39'
+gem 'rubocop-rspec', '~> 2.15'
+gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
+gem 'rubocop-performance', '~> 1.15', '>= 1.15.1'

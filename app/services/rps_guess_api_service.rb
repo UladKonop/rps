@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RpsGuessApiService
   API_URL = 'https://5eddt4q9dk.execute-api.us-east-1.amazonaws.com/rps-stage/throw'
   TIMEOUT = '1'

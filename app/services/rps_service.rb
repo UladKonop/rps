@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class RpsService
   attr_reader :rand_seed
 
-  def initialize(guess:, rand_seed: 2342343)
+  def initialize(guess:, rand_seed: 2_342_343)
     @guess = guess
     @rand_seed = rand_seed
   end
@@ -28,10 +30,9 @@ class RpsService
 
   def offline_computer_guess
     srand(rand_seed)
-    computer_guesses = %w{rock paper scissors}
+    computer_guesses = %w[rock paper scissors]
     computer_guesses.sample
   end
-
 
   def rule_engine
     {
