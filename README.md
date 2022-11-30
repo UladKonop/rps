@@ -56,6 +56,10 @@ rvm use ruby-3.0.0
 
 nvm use 12
 
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rails db:seed
+
 bundle exec rails s
 
 go to localhost:3000
