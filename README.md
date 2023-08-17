@@ -45,3 +45,22 @@ The icon assets can be downloaded from the adobe site.
 **Deliverable**
 
 Link to a github repo with a readme explaining how to install and play the game.  The repo should include a master branch and a feature branch with a PR.  Please commit incrementally as the application is developed.
+
+**To run:**
+```
+git clone git@github.com:UladKonop/rps.git
+
+gco feature
+
+rvm use ruby-3.0.0
+
+nvm use 12
+
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rails db:seed
+
+bundle exec rails s
+
+go to localhost:3000
+```
