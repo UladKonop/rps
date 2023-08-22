@@ -9,21 +9,25 @@
   <p class="select-text">SELECT YOUR BET</p>
   <div class="button-group">
     <div class="button" value="rock">
-      <%= image_tag("rock.png") %>
+      <%= image_tag("rock.webp") %>
       <span class="button-text">Rock</span>
     </div>
     <div class="button" value="paper" >
-      <%= image_tag("paper.png") %>
+      <%= image_tag("paper.webp") %>
       <span class="button-text">Paper</span>
     </div>
     <div class="button" value="scissors" >
-      <%= image_tag("scissors.png") %>
+      <%= image_tag("scissors.webp") %>
       <span class="button-text">Scissors</span>
+    </div>
+    <div class="button" value="well" >
+      <%= image_tag("well.webp") %>
+      <span class="button-text">Well</span>
     </div>
   </div>
   <div class="modal-container" id='modal-container'>
     <div class="modal" id="modal">
-      <%= image_tag("х.png", class: "modal-close", id: 'close') %>
+      <%= image_tag("x.webp", class: "modal-close", id: 'close') %>
       <div class="modal-first-part" id='first-part'>
       <p class="modal-title" id="modal-title">WAITING CURB’S CHOOSE</p>
       <div class="bet-container">
@@ -32,16 +36,16 @@
         </div>
         <div class="bet-group">
           <div class="bet-loading">
-            <%= image_tag("loader.png") %>
+            <%= image_tag("loader.webp") %>
           </div>
-          <span class="bet-text"><%= image_tag("curb_logo.png") %></span>
+          <span class="bet-text"><%= image_tag("curb_logo.webp") %></span>
         </div>
       </div>
       </div>
       <div class="modal-second-part" id="second-part">
         <p class="modal-title-second-part" id="modal-title-second-part"></p>
         <p class="modal-second-part-bet-text" id="modal-second-part-bet-text"></p>
-        <p class="modal-second-part-bet-text">Statistics: wins %<div class="modal-second-part-bet-text" id="percentage"></div></p>
+        <p class="modal-second-part-bet-text">Wins: <span class="modal-second-part-bet-text" id="percentage"></span>%</p>
       </div>
     </div>
   </div>
