@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 module Api
+  # The ApiController class serves as the base controller for API endpoints, providing common functionality
+  # such as error handling.
   class ApiController < ApplicationController
-    protect_from_forgery with: :null_session
+    include ErrorHandling
 
-    rescue_from RailsParam::InvalidParameterError, with: :invalid_parameter_error
-    def invalid_parameter_error(exception)
-      render json: {
-        error: exception.message
-      }, status: :unprocessable_entity
-    end
+    # Class attribute that holds the default error status for the controller.
+    class_attribute :error_status, default: :unprocessable_entity
   end
 end

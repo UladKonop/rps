@@ -26,7 +26,7 @@ Create a web-based application that allows a user to play rock-paper-scissors.
 - Scissors beats paper
 - Paper beats rock
 - Identical throws tie (rock == rock, etc.)
-- Extra Credit : What if we threw in Hammer as a choice?  How would you represent more than 3 choices?
+- Extra Credit : What if we threw in Well as a choice?  How would you represent more than 3 choices?
 
 **Technologies**
 
@@ -50,11 +50,10 @@ Link to a github repo with a readme explaining how to install and play the game.
 ```
 git clone git@github.com:UladKonop/rps.git
 
-gco feature
-
 rvm use ruby-3.0.0
 
 nvm use 12
+npm install
 
 bundle exec rails db:create
 bundle exec rails db:migrate
